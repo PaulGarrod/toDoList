@@ -25,6 +25,10 @@ h1 {
     float: right;
 }
 
+.fa {
+    margin-right: 8px;
+}
+
 input {
     font-size: 18px;
     color: #2980b9;
