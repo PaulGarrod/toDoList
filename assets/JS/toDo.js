@@ -1,28 +1,32 @@
-let todos = [
-    {
-        title: "Complete Portfolio",
-        important: false
-    }, {
-        title: "Apply for Dev Jobs",
-        important: true
-    }, {
-        title: "Take dogs for a walk",
-        important: true
-    }, {
-        title: "Take Lisa for Sushi",
-        important: true
-    }
+let todos = ["Finish Portfolio",
+"Take Lisa for Sushi",
+"Apply for Dev Jobs",
+"take dog for a walk"
 ];
 
 //function to create li's from the array
 todos.forEach(function(todo){
-    console.log(`${todo.title}`);
+    console.log(`${todo}`);
     $("ul").append(`
     <li>
     <span class='trashIcon'><i class='fa fa-trash'></i>
-    </span><span class='todoText'>${todo.title}</span>
+    </span><span class='todoText'>${todo}</span>
     <span class='flagIcon'><i class='far fa-flag'></i></span>
     </li>`);
+});
+
+$("input[type='text']").keypress(function(e){
+    if(e.which === 13){
+        var todoText = $(this).val();
+        $(this).val("");
+        //change this to add todo to array
+        $("ul").append(`
+        <li>
+        <span class='trashIcon'><i class='fa fa-trash'></i>
+        </span><span class='todoText'>${todoText}</span>
+        <span class='flagIcon'><i class='far fa-flag'></i></span>
+        </li>`);
+        };
 });
 
 //check off specific todos by clicking
@@ -31,8 +35,7 @@ $("ul").on("click", ".todoText", function(){
 });
 
 //click on x to delete todo
-// $("ul").on("click", ".trashIcon", function(e){
-$(".trashIcon").on("click", function(e){
+$("ul").on("click", ".trashIcon", function(e){
     $(this).parent().fadeOut(750, function(){
         $(this).remove();
     });
@@ -40,18 +43,9 @@ $(".trashIcon").on("click", function(e){
     //this stops event bubbling up and triggering parent events
 });
 
-$(".flagIcon").on("click", function () {
-    $("i", this).toggleClass("fas far");
+$("ul").on("click", ".flagIcon", function () {
+    $("i", this).toggleClass("far fas");
 })
-
-$("input[type='text']").keypress(function(e){
-    if(e.which === 13){
-        var todoText = $(this).val();
-        $(this).val("");
-        //change this to add todo to array
-        $("ul").append("<li><span><i class='fa fa-trash'></i></span> " + todoText + "</li>");
-        };
-});
 
 $("#plus").click(function(){
     $("input[type='text']").fadeToggle();
