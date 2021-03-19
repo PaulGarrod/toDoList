@@ -57,11 +57,12 @@ li {
     line-height: 40px;
     color: rgb(6, 6, 6);
 }
+
 li:nth-child(2n) {
     background-color: #f7f7f7;
 }
 
-li span {
+.trashIcon {
     background-color: #e74c3c;
     height: 40px;
     width: 0px;
@@ -72,9 +73,15 @@ li span {
     transition: 0.5s linear;
     opacity: 0;
 }
-li:hover span {
+
+li:hover .trashIcon {
     width: 40px;
     opacity: 1.0;
+}
+
+.flagIcon {
+    float: right;
+    margin-right: 8px;
 }
 
 .completed {
