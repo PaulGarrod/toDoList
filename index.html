@@ -12,9 +12,25 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="buttons">
+        <div id="topBtns">
+            <button id="plus"><span><i class="fa fa-plus"></i></span></button>
+            <button id="reorder">Reorder</button>
+            <button id="clearAll">Clear All</button>
+        </div>
+        <div id="bottomBtns">
+            <label for="todoName">
+                <input id="todoName" type="text" placeholder="Add new to do:">
+            </label>
+            <label for="important">Important Todo: 
+                <input id="important" type="checkbox" name="important">
+            </label>
+        </div>
+        <button id="submit">Add Todo</button>
+    </div>
+    
     <div id="container">
-        <h1>To-Do List <span id="plus"><i class="fa fa-plus"></i></span></h1>
-        <input type="text" placeholder="Add new to do:">
+        <h1>To-Do List</h1>
         <ul id="todoList"></ul>
     </div>
     <script src="assets/JS/toDo.js"></script>
