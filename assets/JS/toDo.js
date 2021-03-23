@@ -108,10 +108,15 @@ $("#plus").click(function(){
     $("input[type='text']").fadeToggle();
     $("label[for='important']").fadeToggle();
     $("input[type='checkbox']").fadeToggle();
+    $("#submit").fadeToggle();
 })
 
 $("#clearAll").click(function(){
-    // localStorage.clear();
     deleteAllTodos(todosArray)
     renderData(todosArray)
+});
+
+$('#reorder').click(function(){
+    todosArray.sort((a, b) => a.important < b.important ? 1 : -1);
+    renderData(todosArray);
 });
