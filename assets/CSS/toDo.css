@@ -1,41 +1,33 @@
 body {
     font-family: 'Roboto', sans-serif;
     background: #525252;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #3d72b4, #525252);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #6ca1e2cb, #d15959); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #8bb8f0a4 #f29696aa);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8bb8f0a4, #f29696aa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 button {
     padding: 8px;
-    margin: 10px;
+    margin: 12px;
     border: none;
     border-radius: 5px;
     background-color: #f7f7f7;
     color: #2980b9;
+    font-size: 1.1em;
 }
 
 #buttons {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     border-radius: 6px;;
-    width: 360px;
-    margin: 100px auto 0px auto;
+    width: 400px;
+    margin: 70px auto 0px auto;
     padding: 10px 5px;
     background-color: #297fb980;
-}
-
-#BtnContainer {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-    border-radius: 6px;;
-    width: 360px;
-    margin: 100px auto 0px auto;
-    padding: 10px 5px;
-    background-color: #2980b980;
 }
 
 #container {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     border-radius: 6px;;
-    width: 360px;
+    width: 400px;
     margin: 10px auto 0px auto;
     padding: 10px 5px;
     background-color: #2980b980;
@@ -51,7 +43,7 @@ h1 {
     display: inline;
 }
 
-#todoName {
+#todoTitle, #todoDesc{
     font-size: 18px;
     color: #2980b9;
     background-color: #f7f7f7;
@@ -63,7 +55,12 @@ h1 {
     border: 3px, rgba(0, 0, 0, 0);
 }
 
-#todoName:focus {
+#important {
+    transform: scale(2);
+    margin: 15px;
+}
+
+#todoTitle:focus, #todoDesc:focus, #important:focus{
     background-color: white;
     border: 3px solid #2980b9;
     outline: none;
@@ -75,15 +72,17 @@ h1 {
 
 #bottomBtns {
     color: white;
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin: 10px auto;
 }
 
 #submit {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-    border-radius: 6px;;
-    width: 360px;
+    border-radius: 6px;
+    width: 70%;
     margin: 10px auto;
+    display: flex;
+    justify-content: center;
     padding: 10px 5px;
     background-color: #f7f7f7;
     font-size: 1.2em;

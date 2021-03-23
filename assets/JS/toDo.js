@@ -32,32 +32,33 @@ const renderData = (todos) => {
     
 renderData(todosArray);
 
+let submitTodo = function(){
+    if($('#todoTitle').val() !== ''){
+        let newTitle = $("input[type='text']").val();
+        let newDesc = $("#todoDesc").val();
+        let newImportant = $("input[type=checkbox][name=important]:checked").val() === "on" ? true : false;
+        const todo = {
+            title: newTitle,
+            desc: newDesc,
+            important: newImportant
+        }
+        todosArray.push(todo);
+        newTodo(todo);
+        localStorage.setItem('items', JSON.stringify(todosArray))
+    }
+}
+
 $("input[type='text']").keypress(function(e){
     if(e.which === 13){
-    let newTitle = $("input[type=text]").val();
-    let newImportant = $("input[type=checkbox][name=important]:checked").val() === "on" ? true : false;
-    const todo = {
-        title: newTitle,
-        important: newImportant
-    }
-    todosArray.push(todo);
-    newTodo(todo);
-    localStorage.setItem('items', JSON.stringify(todosArray))
+    submitTodo()
     this.value = '';
     };
 });
 
 $("#submit").click(function(){
-    let newTitle = $("input[type=text]").val();
-    let newImportant = $("input[type=checkbox][name=important]:checked").val() === "on" ? true : false;
-    const todo = {
-        title: newTitle,
-        important: newImportant
-    }
-    todosArray.push(todo);
-    newTodo(todo);
-    localStorage.setItem('items', JSON.stringify(todosArray))
-    $('input[type=text]').val('')
+    submitTodo()
+    $('#todoTitle').val('')
+    $('#todoDesc').val('')
     $('input[type=checkbox]').prop('checked', false);
 });
 
@@ -105,10 +106,9 @@ $("ul").on("click", ".flagIcon", function () {
 })
 
 $("#plus").click(function(){
-    $("input[type='text']").fadeToggle();
-    $("label[for='important']").fadeToggle();
-    $("input[type='checkbox']").fadeToggle();
     $("#submit").fadeToggle();
+    $("#bottomBtns").fadeToggle();
+
 })
 
 $("#clearAll").click(function(){
