@@ -8,7 +8,7 @@ const newTodo = (todo) => {
         <li>
         </span><span class='todoText'>${todo.title}</span>
         <span class='flagIcon'><i class='fas fa-flag'></i></span>
-        <span class='trashIcon'><i class='fa fa-trash'></i>
+        <span class='trashIcon'><i class='fa fa-trash'></i></span>
         </li>
         `);
     } else {
