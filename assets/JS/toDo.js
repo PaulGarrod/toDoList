@@ -1,7 +1,9 @@
+// local storage rendering
 let todosArray = localStorage.getItem('items')
   ? JSON.parse(localStorage.getItem('items'))
   : [];
 
+//   append new todo to DOM
 const newTodo = (todo) => {
     if(todo.important === true){
         $("ul").append(`
@@ -22,7 +24,7 @@ const newTodo = (todo) => {
     }
 };
 
-//function to create li's from the array
+// render current data, remove old list items
 const renderData = (todos) => {
     $('li').remove();
     todos.forEach((todo) => {
@@ -32,14 +34,13 @@ const renderData = (todos) => {
     
 renderData(todosArray);
 
-let submitTodo = function(){
+// submit a new to do item
+const submitTodo = function(){
     if($('#todoTitle').val() !== ''){
-        let newTitle = $("input[type='text']").val();
-        let newDesc = $("#todoDesc").val();
+        let newTodoItem = $("input[type='text']").val();
         let newImportant = $("input[type=checkbox][name=important]:checked").val() === "on" ? true : false;
         const todo = {
-            title: newTitle,
-            desc: newDesc,
+            title: newTodoItem,
             important: newImportant
         }
         todosArray.push(todo);
@@ -48,37 +49,43 @@ let submitTodo = function(){
     }
 }
 
+// submit to do using enter key
 $("input[type='text']").keypress(function(e){
     if(e.which === 13){
     submitTodo()
     this.value = '';
+    $('input[type=checkbox]').prop('checked', false);
     };
 });
 
-$("#submit").click(function(){
+// submit to do using button
+$("#submit-button").click(function(){
     submitTodo()
-    $('#todoTitle').val('')
-    $('#todoDesc').val('')
+    $('#todo-list-item').val('')
     $('input[type=checkbox]').prop('checked', false);
 });
 
+// find the index of a to do
 const findIndex = (todo) => {
     const index = todosArray.findIndex(x => x.title === todo);
     return index;
 }
 
+// remove to do function
 const deleteTodo = (todo) => {
     const index = findIndex(todo)
     todosArray.splice(index, 1);
     localStorage.setItem('items', JSON.stringify(todosArray))
 };
 
+// remove all to dos funtion
 const deleteAllTodos = (todosArray) => {
     todosArray.splice(0, todosArray.length);
     localStorage.setItem('items', JSON.stringify(todosArray))
     localStorage.getItem('items')
 };
 
+// toggle flag function
 const toggleFlag = (todo) => {
     const index = findIndex(todo);
     todosArray[index].important = !todosArray[index].important;
@@ -95,28 +102,32 @@ $("ul").on("click", ".trashIcon", function(e){
     console.log(todosArray)
 });
 
-//check off specific todos by clicking
+//Strikethrough to do for completion
 $("ul").on("click", ".todoText", function(){
     $(this).toggleClass("completed");
 });
 
+// toggle flag on click
 $("ul").on("click", ".flagIcon", function () {
     $("i", this).toggleClass("far fas");
     toggleFlag(this.parentNode.innerText)
 })
 
-$("#plus").click(function(){
+// show/ hide inputs using plus icon
+$("#plus-icon").click(function(){
     $("#submit").fadeToggle();
-    $("#bottomBtns").fadeToggle();
+    $("#input-wrapper").fadeToggle();
 
 })
 
-$("#clearAll").click(function(){
+// clear all to dos on click
+$("#clearAll-button").click(function(){
     deleteAllTodos(todosArray)
     renderData(todosArray)
 });
 
-$('#reorder').click(function(){
+// reorder to do array. ordered by flagged.
+$('#reorder-button').click(function(){
     todosArray.sort((a, b) => a.important < b.important ? 1 : -1);
     renderData(todosArray);
 });

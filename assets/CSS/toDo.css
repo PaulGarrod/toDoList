@@ -5,35 +5,6 @@ body {
     background: linear-gradient(to right, #8bb8f0a4, #f29696aa);
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 440px;
-    align-items: center;
-    margin: 30px auto;
-}
-
-#buttons, #container {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    width: 440px;
-    margin-top: 20px;
-    padding: 10px 15px;
-    background-color: #297fb980;
-}
-
-@media only screen and (max-width: 500px) {
-    #buttons, #container {
-        width: 350px;
-    }
-
-    body {
-        background:  #f29696aa;
-    }
-}
-    
-}
-
 button {
     padding: 8px;
     margin: 12px;
@@ -42,56 +13,6 @@ button {
     background-color: #f7f7f7;
     color: #2980b9;
     font-size: 1.1em;
-}
-
-h1 {
-    color: white;
-    margin: 0;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    font-size: 24px;
-    font-weight: normal;
-    display: inline;
-}
-
-#todoTitle, #todoDesc{
-    font-size: 18px;
-    color: #2980b9;
-    background-color: #f7f7f7;
-    width: 100%;
-    padding: 13px 13px 13px 20px;
-    box-sizing: border-box;
-    border-radius: 5px;;
-    border: 3px, rgba(0, 0, 0, 0);
-}
-
-#important {
-    transform: scale(2);
-    margin: 15px;
-}
-
-#todoTitle:focus, #todoDesc:focus, #important:focus{
-    background-color: white;
-    border: 3px solid #2980b9;
-    outline: none;
-}
-
-#bottomBtns {
-    color: white;
-    font-size: 1.1em;
-    margin: 10px auto;
-}
-
-#submit {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    width: 70%;
-    margin: 10px auto;
-    display: flex;
-    justify-content: center;
-    padding: 10px 5px;
-    background-color: #f7f7f7;
-    font-size: 1.2em;
 }
 
 ul {
@@ -116,6 +37,73 @@ li:hover .trashIcon {
     opacity: 1.0;
 }
 
+#todo-list-item {
+    font-size: 18px;
+    color: #2980b9;
+    background-color: #f7f7f7;
+    width: 100%;
+    padding: 13px 13px 13px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 3px, rgba(0, 0, 0, 0);
+}
+
+#important-flag {
+    transform: scale(2);
+    margin: 15px;
+}
+
+#todo:focus, #important-flag:focus{
+    background-color: white;
+    border: 3px solid #2980b9;
+    outline: none;
+}
+
+#input-wrapper {
+    color: white;
+    font-size: 1.1em;
+    margin: 10px auto;
+}
+
+#submit-button {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    width: 70%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    padding: 10px 5px;
+    background-color: #f7f7f7;
+    font-size: 1.2em;
+}
+
+.header {
+    color: white;
+    margin: 0;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: normal;
+    display: inline;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 440px;
+    align-items: center;
+    margin: 30px auto;
+}
+
+.container {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    width: 440px;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #297fb980;
+}
+
 .trashIcon {
     background-color: #e74c3c;
     height: 40px;
@@ -137,4 +125,14 @@ li:hover .trashIcon {
 .completed {
     color: grey;
     text-decoration: line-through;
+}
+
+@media only screen and (max-width: 500px) {
+    .container {
+        width: 350px;
+    }
+
+    body {
+        background:  #f29696aa;
+    }
 }
